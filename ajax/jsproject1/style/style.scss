@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.section-header{
+    h2{
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 600;
+        font-size: 36px;
+    }
+}
+.custom-btn{
+    background-color: #fdfdfd;
+    color: black;
+}
+
+.firstdata{
+    .section-header{
+        h2{
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 400;
+            font-size: 24px;
+        }
+        
+    }
+}
+
+.color-w{
+    color: white;
+}

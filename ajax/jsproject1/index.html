@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project0Js</title>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="heading p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-header">
+                        <h2>AJAX Practice Project: Contacts</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- insertion field -->
+    <div class="insertion">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col">
+                            <input id="userName" class="form-group p-2 w-100" type="text" placeholder="Name" value="">
+                        </div>
+                        <div class="col">
+                            <input id="phone" class="form-group p-2 w-100" type="text" placeholder="Phone" value="">
+                        </div>
+                        <div class="col">
+                            <input id="email" class="form-group p-2 w-100" type="email" placeholder="Email" value="">
+                        </div>
+                        <div class="col p-1">
+                            <button id="postBtn" class="btn btn-primary" >Add to Contacts</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-dark text-center">
+                        <thead class="bg-dark color-w">
+                          <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tBody">
+                          <!-- <tr>
+                            <td>azi</td>
+                            <td>123123123</td>
+                            <td>ex@gmail.com</td>
+                            <td>
+                                <button class="btn btn-group btn-warning m-2">Edit</button>
+                                <button class="btn btn-group btn-danger m-2">Delete</button>
+                            </td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="contactEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Contact</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="editName" class="col-form-label">Edit Name:</label>
+                  <input type="text" class="form-control" id="editName">
+                </div>
+                <div class="form-group">
+                  <label for="editPhone" class="col-form-label">Edit Phone:</label>
+                  <input type="text" class="form-control" id="editPhone">
+                </div>
+                <div class="form-group">
+                  <label for="editEmail" class="col-form-label">Edit Email:</label>
+                  <input type="email" class="form-control" id="editEmail">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button id="saveContact" type="button" class="btn btn-primary">Save Contact</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/axios.min.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>
