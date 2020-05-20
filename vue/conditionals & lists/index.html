@@ -4,10 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue.Js</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
-    
+    <div id="app">
+        <!-- <p v-if="char == 'a' " >You can see A.</p>
+        <p v-else-if="char == 'b' ">Now, You can see B.</p>
+        <p v-else>Now, You can see C.</p> -->
+        
+        <!-- template -> alternative v-if  -->
+        
+        <!-- <template v-if="show">
+            <h4>It's a heading inside template</h4>
+            <p>This is inside template tag</p>
+        </template> -->
+        <!-- v-show -->
+        
+        <!-- <p v-show="show">Do you see me?</p>
+        <button @click="char = 'b' ">Switch</button>
+        <button @click="char = 'c' ">Switch Else</button>
+        <button @click="show = !show">Switch Show</button> -->
+
+        <!-- Outputting lists v-for -->
+
+        <ul>
+            <li v-for="(item,i) in ingredients">{{ item }} index:({{i}})</li>
+        </ul>
+        <ul>
+            <li v-for="person in persons">{{ person.name }} and age: {{person.age}}</li>
+        </ul>
+
+        <template  v-for="(item,i) in ingredients">
+            <h4>{{ item }}</h4>
+            <p> index:({{i}})</p>
+        </template>
+        <hr>
+        <!-- objects -->
+        <ul>
+            <li v-for="person in persons">
+                <div v-for="(value,key, index) in person">        <!--nexted for-loop-->
+                    {{key}}: {{value}} ( {{index}} )         <!--Key value for the array object-->
+                </div>
+            </li>
+        </ul>
+        <hr>
+        <!-- looping through number -->
+        <ul>
+            <li v-for="n in 10"> {{n}} </li>
+        </ul>
+    </div>
     <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                show: true,
+                char: 'a',
+                ingredients: [ 'meat', 'loaf', 'rice', 'egg'],
+                persons: [ 
+                    { name: 'Kazi', age: '22' },
+                    { name: 'Shishir', age: '25' }
+                ]
+            }
+        })
+    </script>
 </body>
 </html>
