@@ -1,0 +1,24 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  background-color: #e3e3e3;
+  margin: 5px 0;
+  display: inline-block;
+}
+
+.green {
+  background-color: #0dad0d;
+}
+
+.red {
+  background-color: #f73b3b;
+}
+
+.blue {
+  background-color: #4e4eeb;
+}
+/*# sourceMappingURL=style.css.map */

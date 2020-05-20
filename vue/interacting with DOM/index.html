@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.Js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to the learning of vue.js</h1>
+    <div id="app">
+        <h3>First Vue.js application</h3>
+        <!-- <input type="text" v-on:input="changeMsg"> -->
+        <h2 v-once>{{ title }}</h2>
+        <h4> another line, with a little change ({{ another() }}) </h4>
+        <a v-bind:href="link"> Google </a>
+        <p v-html="finishedLink">Facebook</p>
+    </div>
+
+    <!-- Exercise - 1 -->
+    <div id="exercise">
+        <p><i><b>Exercise - 1</b></i></p>
+        <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+         <p>VueJS is pretty cool - {{ myName }}, {{ age }}</p>
+         <!-- 2) Output your age, multiplied by 3 -->
+         <p>Age multiplied by 3: {{ multipleAge() }} </p>
+         <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+         <p>A function to call random float: {{ randomFloat() }} </p>
+         <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+         <div>
+             <img v-bind:src="imgSrc" style="width:100px;height:100px">
+         </div>
+         <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+         <div>
+             <input v-bind:value="myName" type="text">
+         </div>
+     </div>
+     <!-- EX Ends -->
+     <!-- event -->
+     <div id="app2">
+         <p> {{ counter * 2 > 10 ? 'greater than 10' : 'smaller than 10' }} </p>
+         <button v-on:click="counting(2, $event)">Count</button>
+         <button v-on:click="counter++">Count</button>
+         <p v-on:mousemove="updateCo">
+             Co-ordinates: {{ x }} / {{ y }}
+             - <span v-on:mousemove.stop>DEAD SPOT</span>
+         </p>
+         <input type="text" v-on:keyup.enter.space="alertMe">
+     </div>
+     <!-- ENDS -->
+     <!-- More from 1st module -->
+     <div id="app3">
+         <input type="text" v-model="name">        <!-- v-model -->
+         <p> {{ name }} </p>
+         <!-- Ends -->
+         <!-- More reactivity -->
+        <button @click="counter++">+</button>
+        <button @click="counter--">-</button>
+        <button @click="incSec++">Second counter</button>
+        <!-- <button v-on:click="inc">sp</button> -->
+        <p> counter: {{ counter }} | {{ incSec }} </p>
+        <!-- <p>Result: {{ result() }} </p> -->
+        <p> {{ result() }} || {{ output }} </p>
+     </div>
+     <!-- Styling -->
+     <div id="styling">
+         <!-- Styling Dynamically with css -->
+         <!-- <div class="square" @click="changetoColor = !changetoColor" :class="changeWObj" ></div>
+         <div class="square" @click="changetoColor = !changetoColor" :class="{ red : changetoColor, green: !changetoColor }" ></div>
+         <div class="square" @click="changetoColor = !changetoColor" :class="[color, { red: changetoColor }]" ></div>
+         <hr>
+         <input type="text" v-model="color"> -->
+
+         <!-- Styling Dynamically without css -->
+         <div class="square" :style="{backgroundColor: color}"></div>
+         <div class="square" :style="myStyle"></div>
+         <div class="square" :style="[ myStyle, {height: width + 'px'} ]"></div>
+         <hr>
+         <input type="text" v-model="color">
+         <input type="text" v-model="width">
+         <input type="text" v-model="height">
+     </div>
+    <script src="vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                title: 'Hello World!',
+                link: "https://www.google.com",
+                finishedLink: " <a href= 'https://www.facebook.com'>Facebook</a> "
+            },
+            methods: {
+                changeMsg: function (event) {
+                    this.title = event.target.value
+                },
+                another: function () {
+                    this.title = "Hello!";
+                    return this.title;
+                }
+            }
+        });
+        var exercise = new Vue({
+            el: "#exercise",
+            data: {
+                myName: "Musharrof Shishir",
+                age: 25,
+                imgSrc: "https://miro.medium.com/max/3920/1*oZqGznbYXJfBlvGp5gQlYQ.jpeg"
+            },
+            methods: {
+                multipleAge: function(){
+                    return this.age*3;
+                },
+                randomFloat: function(){
+                    return Math.random();
+                }
+            }
+        });
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                counter: 0,
+                x: 0,
+                y:0
+            },
+            methods: {
+                counting: function(step, event){
+                    this.counter += step;
+                },
+                updateCo: function(event){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                alertMe: function(){
+                    alert("Alert!");
+                }
+            }
+        });
+
+        var app3 = new Vue({
+            el: "#app3",
+            data: {
+                name: "Shishir",
+                counter: 0,
+                incSec: 0,
+                sp: 0
+            },
+            computed:{
+                output: function(){
+                    console.log('output');
+                    return this.counter > 5 ? 'greater then 5': 'smaller then 5';
+                }
+            },
+            watch: {
+                counter: function(){
+                    
+                    setTimeout(function(){
+                        app3.counter = 0;
+                    },2000);
+                }
+            },
+            methods: {
+                result: function(){
+                    console.log('result');
+                    return this.counter > 5 ? 'greater then 5': 'smaller then 5';
+                }
+            }
+        });
+        var styling = new Vue({
+            el: "#styling",
+            data: {
+                changetoColor: false,
+                red: 'red',
+                color: 'red',
+                width: 0,
+                height: 0
+            },
+            computed: {
+                changeWObj: function(){
+                    return{
+                        //green : this.changetoColor,
+                        //red: !this.changetoColor 
+
+                    }   
+                },
+                myStyle: function(){
+                    return {
+                        backgroundColor: this.color,
+                        width: this.width+'px',
+                        height: this.height+'px'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
