@@ -1,4 +1,4 @@
-# js-practice
+# js-practice (ajax, frameworks, etc)
 
 practicing javascript. will update almost everything i code. hopefully!
 
